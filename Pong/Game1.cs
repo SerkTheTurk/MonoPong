@@ -135,7 +135,7 @@ namespace Pong
                     //pressing the play button
                     if (mouseState.LeftButton == ButtonState.Pressed)
                     {
-                        click.Play();
+                        //click.Play();
                         gameState = GameState.PLAYING;
                     }
                 }
@@ -152,7 +152,7 @@ namespace Pong
                     //pressing the quit button
                     if (mouseState.LeftButton == ButtonState.Pressed)
                     {
-                        click.Play();
+                        //click.Play();
                         Exit();
                     }
                 }
