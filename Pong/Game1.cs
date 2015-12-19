@@ -129,8 +129,8 @@ namespace Pong
                 //hovering over the play button
                 if (playButtonRect.Contains(mousePosition))
                 {
-                    rI.Play();
-                    rI.Stop();
+                    //rI.Play();
+                    //rI.Stop();
                     playButton = playButton2;
                     //pressing the play button
                     if (mouseState.LeftButton == ButtonState.Pressed)
@@ -147,7 +147,7 @@ namespace Pong
                 //hovering over the quit button
                 if (quitButtonRect.Contains(mousePosition))
                 {
-                    rollover.Play();
+                    //rollover.Play();
                     quitButton = quitButton2;
                     //pressing the quit button
                     if (mouseState.LeftButton == ButtonState.Pressed)
