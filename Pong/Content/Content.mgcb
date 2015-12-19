@@ -102,3 +102,9 @@
 /processorParam:TextureFormat=Color
 /build:ball.png
 
+#begin Score.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:Score.spritefont
+

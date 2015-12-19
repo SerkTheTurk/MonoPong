@@ -53,6 +53,8 @@ namespace Pong
 
         Random random = new Random();
 
+        SpriteFont font;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -115,6 +117,8 @@ namespace Pong
 
             ball = Content.Load<Texture2D>("ball");
             ballPos = new Vector2(470, 260);
+
+            font = Content.Load<SpriteFont>("Score");
 
             // TODO: use this.Content to load your game content here
         }
@@ -344,6 +348,8 @@ namespace Pong
                 spriteBatch.Draw(leftPaddle, leftPaddlePos, Color.White);
                 spriteBatch.Draw(rightPaddle, rightPaddlePos, Color.White);
                 spriteBatch.Draw(ball, ballPos, Color.White);
+                spriteBatch.DrawString(font, leftScore.ToString(), new Vector2(10, 10), Color.White);
+                spriteBatch.DrawString(font, rightScore.ToString(), new Vector2(910, 10), Color.White);
                 spriteBatch.End();
             }
 
