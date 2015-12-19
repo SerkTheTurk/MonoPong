@@ -35,6 +35,9 @@ namespace Pong
         Vector2 leftPaddlePos;
         float paddleSpeed = 5f;
 
+        Texture2D rightPaddle;
+        Vector2 rightPaddlePos;
+
         SoundEffect rollover;
         SoundEffect click;
         SoundEffectInstance rI;
@@ -90,6 +93,9 @@ namespace Pong
 
             leftPaddle = Content.Load<Texture2D>("paddle");
             leftPaddlePos = new Vector2(0, 220);
+
+            rightPaddle = Content.Load<Texture2D>("paddle");
+            rightPaddlePos = new Vector2(935, 220);
 
             click = Content.Load<SoundEffect>("buttonclick");
             rollover = Content.Load<SoundEffect>("buttonrollover");
@@ -188,6 +194,30 @@ namespace Pong
                         leftPaddlePos.Y += paddleSpeed;
                     }
                 }
+
+                if (ks.IsKeyDown(Keys.Up))
+                {
+                    if (rightPaddlePos.Y <= 0)
+                    {
+                        rightPaddlePos.Y -= 0;
+                    }
+                    else
+                    {
+                        rightPaddlePos.Y -= paddleSpeed;
+                    }
+                }
+
+                if (ks.IsKeyDown(Keys.Down))
+                {
+                    if (rightPaddlePos.Y + rightPaddle.Height >= 540)
+                    {
+                        rightPaddlePos.Y += 0;
+                    }
+                    else
+                    {
+                        rightPaddlePos.Y += paddleSpeed;
+                    }
+                }
             }
             
             base.Update(gameTime);
@@ -214,6 +244,7 @@ namespace Pong
             {
                 spriteBatch.Begin();
                 spriteBatch.Draw(leftPaddle, leftPaddlePos, Color.White);
+                spriteBatch.Draw(rightPaddle, rightPaddlePos, Color.White);
                 spriteBatch.End();
             }
 
