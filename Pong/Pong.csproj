@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\ball.png" />
     <Content Include="Content\buttonclick.wav" />
     <Content Include="Content\buttonrollover.wav" />
     <Content Include="Content\paddle.png" />

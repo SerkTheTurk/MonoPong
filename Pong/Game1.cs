@@ -42,6 +42,10 @@ namespace Pong
         SoundEffect click;
         SoundEffectInstance rI;
 
+        Texture2D ball;
+        Vector2 ballPos;
+        float ballSpeed = 8f;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -101,6 +105,9 @@ namespace Pong
             rollover = Content.Load<SoundEffect>("buttonrollover");
             rI = rollover.CreateInstance();
             rI.IsLooped = false;
+
+            ball = Content.Load<Texture2D>("ball");
+            ballPos = new Vector2(470, 260);
 
             // TODO: use this.Content to load your game content here
         }
@@ -245,6 +252,7 @@ namespace Pong
                 spriteBatch.Begin();
                 spriteBatch.Draw(leftPaddle, leftPaddlePos, Color.White);
                 spriteBatch.Draw(rightPaddle, rightPaddlePos, Color.White);
+                spriteBatch.Draw(ball, ballPos, Color.White);
                 spriteBatch.End();
             }
 
