@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
+using System;
 
 namespace Pong
 {
@@ -44,7 +45,13 @@ namespace Pong
 
         Texture2D ball;
         Vector2 ballPos;
-        float ballSpeed = 8f;
+        float ballSpeed = 5f;
+        int ballDir;
+
+        int leftScore = 0;
+        int rightScore = 0;
+
+        Random random = new Random();
 
         public Game1()
         {
@@ -96,10 +103,10 @@ namespace Pong
             quitButtonRect = new Rectangle(355, 250, 250, 50);
 
             leftPaddle = Content.Load<Texture2D>("paddle");
-            leftPaddlePos = new Vector2(0, 220);
+            leftPaddlePos = new Vector2(15, 220);
 
             rightPaddle = Content.Load<Texture2D>("paddle");
-            rightPaddlePos = new Vector2(935, 220);
+            rightPaddlePos = new Vector2(920, 220);
 
             click = Content.Load<SoundEffect>("buttonclick");
             rollover = Content.Load<SoundEffect>("buttonrollover");
@@ -150,6 +157,7 @@ namespace Pong
                     {
                         //click.Play();
                         gameState = GameState.PLAYING;
+                        startGame();
                     }
                 }
                 else
@@ -225,6 +233,89 @@ namespace Pong
                         rightPaddlePos.Y += paddleSpeed;
                     }
                 }
+
+                //ball
+                if (ballDir == 1)
+                {
+                    ballPos.X -= ballSpeed;
+                    ballPos.Y -= ballSpeed;
+                    if (ballPos.Y <= 0)
+                    {
+                        ballDir = 3;
+                    }
+                    if (ballPos.X <= leftPaddlePos.X + leftPaddle.Width)
+                    {
+                        if (ballPos.Y >= leftPaddlePos.Y && ballPos.Y + ball.Height <= leftPaddlePos.Y + leftPaddle.Height)
+                        {
+                            ballDir = 2;
+                        }
+                    }
+                }
+                if (ballDir == 2)
+                {
+                    ballPos.X += ballSpeed;
+                    ballPos.Y -= ballSpeed;
+                    if (ballPos.Y <= 0)
+                    {
+                        ballDir = 4;
+                    }
+                    if (ballPos.X + ball.Width >= rightPaddlePos.X)
+                    {
+                        if (ballPos.Y >= rightPaddlePos.Y && ballPos.Y + ball.Height <= rightPaddlePos.Y + rightPaddle.Height)
+                        {
+                            ballDir = 1;
+                        }
+                    }
+                }
+                if (ballDir == 3)
+                {
+                    ballPos.X -= ballSpeed;
+                    ballPos.Y += ballSpeed;
+                    if (ballPos.Y + ball.Height >= 540)
+                    {
+                        ballDir = 1;
+                    }
+                    if (ballPos.X <= leftPaddlePos.X + leftPaddle.Width)
+                    {
+                        if (ballPos.Y >= leftPaddlePos.Y && ballPos.Y + ball.Height <= leftPaddlePos.Y + leftPaddle.Height)
+                        {
+                            ballDir = 4;
+                        }
+                    }
+                }
+                if (ballDir == 4)
+                {
+                    ballPos.X += ballSpeed;
+                    ballPos.Y += ballSpeed;
+                    if (ballPos.Y + ball.Height >= 540)
+                    {
+                        ballDir = 2;
+                    }
+                    if (ballPos.X + ball.Width >= rightPaddlePos.X)
+                    {
+                        if (ballPos.Y >= rightPaddlePos.Y && ballPos.Y + ball.Height <= rightPaddlePos.Y + rightPaddle.Height)
+                        {
+                            ballDir = 3;
+                        }
+                    }
+                }
+
+                if (ballPos.X >= 960)
+                {
+                    leftScore += 1;
+                    ballPos.X = 470;
+                    ballPos.Y = 260;
+                    ballDir = 1;
+                }
+
+                if (ballPos.X <= 0)
+                {
+                    rightScore += 1;
+                    ballPos.X = 470;
+                    ballPos.Y = 260;
+                    ballDir = 2;
+                }
+
             }
             
             base.Update(gameTime);
@@ -258,5 +349,19 @@ namespace Pong
 
             base.Draw(gameTime);
         }
+
+        public void startGame()
+        {
+            int startDir = random.Next(2) + 1;
+            if (startDir == 1)
+            {
+                ballDir = 1;
+            }
+            else if (startDir == 2)
+            {
+                ballDir = 2;
+            }
+        }
+
     }
 }
