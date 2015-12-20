@@ -108,3 +108,15 @@
 /processorParam:TextureFormat=Compressed
 /build:Score.spritefont
 
+#begin day65.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:day65.wav
+
+#begin musicguy.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:musicguy.spritefont
+

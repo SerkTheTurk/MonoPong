@@ -53,6 +53,7 @@
     <Content Include="Content\ball.png" />
     <Content Include="Content\buttonclick.wav" />
     <Content Include="Content\buttonrollover.wav" />
+    <Content Include="Content\day65.wav" />
     <Content Include="Content\paddle.png" />
     <Content Include="Content\playButton.png" />
     <Content Include="Content\playButton2.png" />
@@ -65,6 +66,7 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\musicguy.spritefont" />
     <None Include="Content\Score.spritefont" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

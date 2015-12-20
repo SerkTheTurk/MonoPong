@@ -43,6 +43,9 @@ namespace Pong
         SoundEffect click;
         SoundEffectInstance rI;
 
+        SoundEffect music;
+        SoundEffectInstance track;
+
         Texture2D ball;
         Vector2 ballPos;
         float ballSpeed = 5f;
@@ -54,6 +57,9 @@ namespace Pong
         Random random = new Random();
 
         SpriteFont font;
+        SpriteFont muse;
+
+        bool soundplay = false;
 
         public Game1()
         {
@@ -119,7 +125,15 @@ namespace Pong
             ballPos = new Vector2(470, 260);
 
             font = Content.Load<SpriteFont>("Score");
+            muse = Content.Load<SpriteFont>("musicguy");
 
+            music = Content.Load<SoundEffect>("day65");
+            track = music.CreateInstance();
+            track.IsLooped = true;
+
+            SoundEffect.MasterVolume = 0.3f;
+
+            
             // TODO: use this.Content to load your game content here
         }
 
@@ -153,13 +167,11 @@ namespace Pong
                 //hovering over the play button
                 if (playButtonRect.Contains(mousePosition))
                 {
-                    //rI.Play();
-                    //rI.Stop();
                     playButton = playButton2;
                     //pressing the play button
                     if (mouseState.LeftButton == ButtonState.Pressed)
                     {
-                        //click.Play();
+                        click.Play();
                         gameState = GameState.PLAYING;
                         startGame();
                     }
@@ -190,6 +202,7 @@ namespace Pong
             //Playing
             if (gameState == GameState.PLAYING)
             {
+                track.Play();
                 if (ks.IsKeyDown(Keys.W))
                 {
                     if (leftPaddlePos.Y <= 0)
@@ -339,6 +352,7 @@ namespace Pong
                 spriteBatch.Draw(title, titlePos, Color.White);
                 spriteBatch.Draw(playButton, playButtonPos, Color.White);
                 spriteBatch.Draw(quitButton, quitButtonPos, Color.White);
+                spriteBatch.DrawString(muse, "Music by @Markymark655", new Vector2(10, 500), Color.Black);
                 spriteBatch.End();
             }
 
@@ -349,7 +363,7 @@ namespace Pong
                 spriteBatch.Draw(rightPaddle, rightPaddlePos, Color.White);
                 spriteBatch.Draw(ball, ballPos, Color.White);
                 spriteBatch.DrawString(font, leftScore.ToString(), new Vector2(10, 10), Color.White);
-                spriteBatch.DrawString(font, rightScore.ToString(), new Vector2(910, 10), Color.White);
+                spriteBatch.DrawString(font, rightScore.ToString(), new Vector2(880, 10), Color.White);
                 spriteBatch.End();
             }
 
