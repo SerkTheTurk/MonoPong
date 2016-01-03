@@ -79,18 +79,6 @@
 /processorParam:TextureFormat=Color
 /build:paddle.png
 
-#begin buttonclick.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:buttonclick.wav
-
-#begin buttonrollover.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:buttonrollover.wav
-
 #begin ball.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -108,15 +96,38 @@
 /processorParam:TextureFormat=Compressed
 /build:Score.spritefont
 
+#begin musicguy.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:musicguy.spritefont
+
+#begin buttonclick.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:buttonclick.wav
+
+#begin buttonrollover.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:buttonrollover.wav
+
 #begin day65.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:day65.wav
 
-#begin musicguy.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:TextureFormat=Compressed
-/build:musicguy.spritefont
+#begin playButton1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:playButton1.png
 
